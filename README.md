@@ -6,7 +6,6 @@ Make sure you have the following installed outside the current project directory
 
 - [golang](https://golang.org) 1.17+
 - [docker](https://www.docker.com/get-started)
-
 - [air](https://github.com/cosmtrek/air) for hot reloading
 - [swagger](https://github.com/swaggo/swag) for automatically generate RESTful API
 
