@@ -1,5 +1,5 @@
 # Fiber Versioning Boilerplate
-[![Linter](https://github.com/aofdev/fiber-versioning/workflows/Lint/badge.svg)](https://github.com/aofdev/fiber-versioning/actions)
+[![Linter](https://github.com/aofdev/fiber-versioning-boilerplate/workflows/Lint/badge.svg)](https://github.com/aofdev/fiber-versioning-boilerplate/actions)
 
 ## Prerequisite
 
