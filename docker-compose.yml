@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  fvb_server:
+    build: .
+    container_name: fiber-versioning-boilerplate-server
+    ports:
+      - 3000:3000
+    restart: "always"
+    depends_on:
+      mongo:
+          condition: service_healthy
+    networks:
+      - fiber_versioning_boilerplate
+
+  mongo:
+    container_name: fiber-versioning-boilerplate-mongo
+    image: mongo:4.4
+    restart: "always"
+    ports:
+      - 27022:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=fvb_user
+      - MONGO_INITDB_ROOT_PASSWORD=KEVKWYSMXMZsg6RLhqYa96X6
+      - MONGO_INITDB_DATABASE=media
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "10"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/media --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    networks:
+      - fiber_versioning_boilerplate
+
+networks:
+  fiber_versioning_boilerplate:
+    name: fiber_versioning_boilerplate
+    driver: bridge

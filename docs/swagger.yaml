@@ -1,0 +1,170 @@
+basePath: /
+definitions:
+  entities.Post:
+    properties:
+      _id:
+        description: The identifier string of the account in the database.
+        example: 61605ba183de6c07967b102d
+        type: string
+      author:
+        description: The user identifier string.
+        example: aof
+        type: string
+      created_at:
+        description: Last this document was created.
+        example: "2021-01-27T05:44:15.337Z"
+        type: string
+      data_version:
+        description: The data version identifier string of the post in the database.
+        example: v1.0
+        type: string
+      meta:
+        $ref: '#/definitions/entities.metaPost'
+      permalink:
+        description: The URL in the format Media by the user.
+        example: https://example.com/222
+        type: string
+      post_time:
+        description: Creation time of the Media.
+        example: "2021-02-14T09:20:32.000Z"
+        type: string
+      text:
+        description: The content of the Media.
+        example: hello world
+        type: string
+      updated_at:
+        description: Last this document was updated.
+        example: "2021-01-28T05:44:15.337Z"
+        type: string
+    type: object
+  entities.RequestFindByListID:
+    properties:
+      ids:
+        description: Request body `IDS` are array
+        example:
+        - "6929046813118876930"
+        - "6929047870637441025"
+        items:
+          maxLength: 100
+          minLength: 1
+          type: string
+        type: array
+    required:
+    - ids
+    type: object
+  entities.metaPost:
+    properties:
+      comment_count:
+        description: Number of Comments of this media.
+        example: 100
+        type: integer
+      like_count:
+        description: Number of Likes of this media.
+        example: 2000
+        type: integer
+      share_count:
+        description: Number of Shares of this media.
+        example: 100
+        type: integer
+      type:
+        description: Indicates whether this media represents a type post.
+        example: post
+        type: string
+    type: object
+  handlers.HTTPError:
+    properties:
+      error:
+        description: The message error description of string.
+        example: a message error
+        type: string
+      status:
+        description: The status error of string.
+        example: error
+        type: string
+    type: object
+  handlers.HTTPSuccess:
+    properties:
+      data:
+        description: The result of json.
+      status:
+        description: The status success of string.
+        example: success
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: fiber@swagger.io
+    name: API Support
+  description: This is a sample swagger for Fiber
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Fiber Versioning Boilerplate
+  version: "1.0"
+paths:
+  /v1/media:
+    post:
+      consumes:
+      - application/json
+      description: get object media
+      parameters:
+      - description: Lists Media id
+        in: body
+        name: ids
+        required: true
+        schema:
+          $ref: '#/definitions/entities.RequestFindByListID'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.HTTPSuccess'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/entities.Post'
+                  type: array
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handlers.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HTTPError'
+      summary: Lists item
+  /v1/media/:id:
+    get:
+      consumes:
+      - application/json
+      description: get media by id
+      parameters:
+      - description: Media id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/handlers.HTTPSuccess'
+            - properties:
+                data:
+                  $ref: '#/definitions/entities.Post'
+              type: object
+      summary: object media
+swagger: "2.0"
