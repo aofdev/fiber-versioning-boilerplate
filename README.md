@@ -13,6 +13,7 @@ Make sure you have the following installed outside the current project directory
 ### Features ✨ 
 - API Versioning
 - Data Versioning
+- Dynamic Struct Type
 - Clean Architecture
 - Postman Collections
 - API Documentation with swagger
