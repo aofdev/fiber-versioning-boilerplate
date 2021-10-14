@@ -1,6 +1,10 @@
 # Fiber Versioning Boilerplate
 [![Linter](https://github.com/aofdev/fiber-versioning-boilerplate/workflows/Lint/badge.svg)](https://github.com/aofdev/fiber-versioning-boilerplate/actions)
 
+<p align="center">
+    <img src="demo.gif" alt="fiber-versioning-boilerplate">
+</p>
+
 ## Prerequisite
 
 Make sure you have the following installed outside the current project directory and available in your `GOPATH`
