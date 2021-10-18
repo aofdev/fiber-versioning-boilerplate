@@ -1,5 +1,6 @@
 # Fiber Versioning Boilerplate
 [![Linter](https://github.com/aofdev/fiber-versioning-boilerplate/workflows/Lint/badge.svg)](https://github.com/aofdev/fiber-versioning-boilerplate/actions)
+[![Testing](https://github.com/aofdev/fiber-versioning-boilerplate/workflows/Testing/badge.svg)](https://github.com/aofdev/fiber-versioning-boilerplate/actions)
 
 <p align="center">
     <img src="demo.gif" alt="fiber-versioning-boilerplate">
@@ -72,15 +73,16 @@ make test
 Run `make help` to list available commands:
 
 ```text
- Choose a command run in fiber-versioning-boilerplate:
+Choose a command run in fiber-versioning-boilerplate:
 
   setup           Initialize project
   docker-start    Start docker-compose
   docker-stop     Stop docker-compose
   start           Start the application
+  copy-env        Copy environment file
   gendoc          Generate docs api with swagger
   test            Run tests coverage
   mongo-dump      Dump MongoDB data for testing
-  mongo-restore   Restore MongoDB data for testingg
+  mongo-restore   Restore MongoDB data for testing
 
 ```
