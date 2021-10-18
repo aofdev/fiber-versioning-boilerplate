@@ -14,10 +14,13 @@ jobs:
       - name: Start app
         run: make setup
 
-      - name: Integration test
+      - name: Run API Tests
         id: run-newman
         uses: anthonyvscode/newman-action@v1
         with:
           collection: postman-collections/fiber-versioning-boilerplate.postman_collection.json
           environment: postman-collections/fiber-versioning-boilerplate.postman_environment.json
           reporters: cli
+      
+      - name: Summary API Tests
+        run: echo ${{ steps.run-newman.outputs.summary }}

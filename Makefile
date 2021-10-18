@@ -3,7 +3,7 @@
 PROJECTNAME := $(shell basename "$(PWD)")
 
 ## setup: Initialize project
-setup: docker-start mongo-restore
+setup: copy-env docker-start mongo-restore
 
 ## docker-start: Start docker-compose
 docker-start:
@@ -16,6 +16,10 @@ docker-stop:
 ## start: Start the application
 start:
 	air
+
+## copy-env: Copy environment file
+copy-env:
+	cp .env.example .env
 
 ## gendoc: Generate docs api with swagger
 gendoc:
